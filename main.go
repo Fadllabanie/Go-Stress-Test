@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -20,6 +19,7 @@ var (
 	maxLatency    time.Duration = time.Duration(0)
 	totalErrors   int
 )
+
 
 func draw() {
 	fmt.Println(`
@@ -93,16 +93,19 @@ func sendRequest(url string, wg *sync.WaitGroup, ch chan<- time.Duration) {
 
 func main() {
 	draw()
-
-	// Parse command-line arguments
 	var url string
 	var numRequests int
-	flag.StringVar(&url, "url", "", "URL of the endpoint to test")
-	flag.IntVar(&numRequests, "requests", 100, "Number of requests to send")
-	flag.Parse()
 
-	if url == "" {
-		fmt.Println("Please provide the URL using the -url flag")
+	// Prompt user to input URL
+	fmt.Print("Enter URL: ")
+	fmt.Scanln(&url)
+
+	// Prompt user to input number of requests
+	fmt.Print("Enter number of requests: ")
+	fmt.Scanln(&numRequests)
+
+	if numRequests <= 0 {
+		fmt.Println("Number of requests must be greater than zero")
 		return
 	}
 
