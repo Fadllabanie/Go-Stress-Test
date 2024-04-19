@@ -41,6 +41,15 @@ After running the stress test, the tool provides the following performance metri
 - Total Errors
 Additionally, it generates and displays a response time distribution histogram to visualize request latencies.
 
+
+## build
+- macos build 
+- windows build 
+- linux build 
+
+you can download build and work on it without clone project
+just after run build he will ask you about endpoint - number of requests
+
 ## Credits
 This tool utilizes the following third-party libraries:
 
